@@ -1,0 +1,160 @@
+/* ===== Reset y altura base ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(180deg, #e0f2ff, #cce0ff);
+  color: #213547;
+}
+
+/* Reset box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== Header azul ===== */
+.app-header {
+  width: 100%;
+  background: #007bff;
+  color: white;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Botones de idioma */
+.idioma-buttons {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ===== Contenedor principal ===== */
+.app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  flex: 1;
+}
+
+/* ===== Contenedor blanco del contenido ===== */
+.contenido-principal {
+  background: white;
+  padding: 2.5rem 2rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  max-width: 950px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenido-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== Barra de pestañas ===== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  flex-wrap: wrap;
+  position: relative;
+  border-bottom: 2px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+/* Botones de pestañas */
+.tabs button {
+  flex: none;
+  min-width: 110px;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background: #f0f0f0;
+  cursor: pointer;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+.tabs button:hover {
+  background: #e0e0e0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.tabs button.active {
+  background: #0056b3;
+  color: white;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* Indicador animado debajo de la pestaña activa */
+.tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 4px;
+  background: #ffcc00;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ===== Contenido de pestañas ===== */
+.tab-content {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Formularios y listas dentro del contenido */
+.tab-content form,
+.tab-content .lista {
+  width: 100%;
+  background: #fafafa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Inputs y botones */
+input, select, textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  padding: 0.65rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}

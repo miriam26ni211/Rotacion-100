@@ -1,0 +1,24 @@
+{
+  "titulo_lista": "Rotation 100",
+  "formulario_pago": "Payment Form",
+  "lista_usuarios": "User List",
+  "historial": "History",
+  "notificaciones": "Notifications",
+
+  "mensaje_bono": "Congratulations! You won your $100 loyalty bonus which will arrive in 3-5 days!",
+  "boton_pago": "Make Payment",
+  "personas_delante": "People ahead of you",
+  "nombre": "Name",
+  "monto": "Amount",
+  "metodo": "Method",
+  "tarjeta": "Card",
+  "paypal": "PayPal",
+  "zelle": "Zelle",
+  "pago_exitoso": "Payment registered successfully",
+  "error_pago": "Error registering payment",
+  "pago_registrado": "Payment registered",
+  "via": "via",
+  "procesando": "Processing...",
+  "todos_campos": "All fields are required",
+  "ver_posiciones_intermedias": "View intermediate positions"
+}

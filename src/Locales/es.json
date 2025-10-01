@@ -1,0 +1,24 @@
+{
+  "titulo_lista": "Rotación 100",
+  "formulario_pago": "Formulario de pago",
+  "lista_usuarios": "Lista de usuarios",
+  "historial": "Historial",
+  "notificaciones": "Notificaciones",
+
+  "mensaje_bono": "¡Felicidades! Has ganado tu bono de fidelidad de $100 que recibirás de 3 a 5 días!",
+  "boton_pago": "Realizar pago",
+  "personas_delante": "Personas delante de ti",
+  "nombre": "Nombre",
+  "monto": "Monto",
+  "metodo": "Método",
+  "tarjeta": "Tarjeta",
+  "paypal": "PayPal",
+  "zelle": "Zelle",
+  "pago_exitoso": "Pago registrado correctamente",
+  "error_pago": "Error al registrar pago",
+  "pago_registrado": "Pago registrado",
+  "via": "vía",
+  "procesando": "Procesando...",
+  "todos_campos": "Todos los campos son obligatorios",
+  "ver_posiciones_intermedias": "Ver posiciones intermedias"
+}

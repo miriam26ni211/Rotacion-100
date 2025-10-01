@@ -1,0 +1,97 @@
+/* ===== Contenedor principal de notificaciones ===== */
+.notificaciones {
+  background: white;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 16px;
+  max-width: 950px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notificaciones:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Título de la sección */
+.notificaciones h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #213547;
+  text-align: center;
+}
+
+/* Lista de notificaciones */
+.notificaciones-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Elemento individual de notificación */
+.notificacion-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.notificacion-item:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+}
+
+/* Información de la notificación */
+.notificacion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.notificacion-fecha {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.notificacion-mensaje {
+  font-size: 1rem;
+  color: #343a40;
+}
+
+/* Botón de eliminar */
+.btn-eliminar {
+  background: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.btn-eliminar:hover {
+  background: #b02a37;
+  transform: translateY(-1px);
+}
+
+/* Mensajes de estado */
+.loading,
+.no-data {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
