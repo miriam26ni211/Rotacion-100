@@ -7,9 +7,6 @@ export default function FormPago({ usuarioId }) {
   const { t } = useTranslation();
   const [nombre, setNombre] = useState('');
   const [monto, setMonto] = useState('');
-  const [metodo, setMetodo] = useState(
-    t('formPago.metodoOpciones', { returnObjects: true })?.[0] || ''
-  );
   const [pagos, setPagos] = useState([]);
 
   useEffect(() => {
@@ -46,21 +43,24 @@ export default function FormPago({ usuarioId }) {
     if (!nombre || !monto) return alert(t('formPago.errorCampos'));
     if (isNaN(value) || value < 10) return alert(t('formPago.errorMonto'));
 
-    const { error } = await supabase
-      .from('pagos')
-      .insert([{ nombre, monto: value, metodo, usuario_id: usuarioId }]);
+    try {
+      // Llamada a tu API que crea sesión de Stripe
+      const res = await fetch('/api/crearSesionStripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, monto: value, usuarioId }),
+      });
 
-    if (error) {
-      alert('Error guardando pago: ' + error.message);
-      return;
+      const { url, error } = await res.json();
+      if (error) return alert('Error creando sesión Stripe: ' + error);
+
+      // Redirige al checkout seguro de Stripe
+      window.location.href = url;
+    } catch (err) {
+      console.error(err);
+      alert('Error al procesar el pago');
     }
-
-    setNombre('');
-    setMonto('');
-    setMetodo(t('formPago.metodoOpciones', { returnObjects: true })?.[0] || '');
   };
-
-  const metodoOpciones = t('formPago.metodoOpciones', { returnObjects: true }) || [];
 
   return (
     <section className="form-pago">
@@ -89,15 +89,6 @@ export default function FormPago({ usuarioId }) {
           />
         </label>
 
-        <label>
-          {t('formPago.metodo')}:
-          <select value={metodo} onChange={(e) => setMetodo(e.target.value)}>
-            {metodoOpciones.map((opcion) => (
-              <option key={opcion}>{opcion}</option>
-            ))}
-          </select>
-        </label>
-
         <button type="submit">{t('formPago.boton')}</button>
       </form>
 
@@ -105,7 +96,7 @@ export default function FormPago({ usuarioId }) {
         <ul>
           {pagos.map((p) => (
             <li key={p.id}>
-              {p.nombre} – ${p.monto.toFixed(2)} ({p.metodo})
+              {p.nombre} – ${p.monto.toFixed(2)}
             </li>
           ))}
         </ul>
@@ -113,7 +104,5 @@ export default function FormPago({ usuarioId }) {
     </section>
   );
 }
-
-
 
 

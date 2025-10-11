@@ -32,10 +32,14 @@ export const resetPassword = async (email, redirectTo) => {
   return { data, error };
 };
 
-// Función para obtener la sesión actual
-export const getSession = async () => {
+// -----------------------------
+// Manejo de sesión
+// -----------------------------
+
+// Obtiene el usuario actual automáticamente
+export const getCurrentUser = async () => {
   const { data } = await supabase.auth.getSession();
-  return data.session;
+  return data.session?.user ?? null;
 };
 
 // Escucha cambios de sesión (login/logout)
@@ -44,5 +48,27 @@ export const onAuthStateChange = (callback) => {
     callback(session?.user ?? null);
   });
   return () => listener.subscription.unsubscribe();
+};
+
+// 🌟 Función de pago automática
+// Llama a tu función serverless procesarPago con el usuario logueado
+export const procesarPago = async (monto, metodo) => {
+  const usuario = await getCurrentUser();
+  if (!usuario) throw new Error("Usuario no autenticado");
+
+  const response = await fetch(
+    "https://akccnxfcldeydrewlcff.functions.supabase.co/procesarPago",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        usuario_id: usuario.id, // ✅ se usa automáticamente
+        monto,
+        metodo,
+      }),
+    }
+  );
+  const data = await response.json();
+  return data;
 };
 

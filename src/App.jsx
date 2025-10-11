@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate, NavLink } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { supabase } from "./supabaseClient";
@@ -15,7 +15,6 @@ import HistorialUsuario from "./components/HistorialUsuario";
 import Notificaciones from "./components/Notificaciones";
 import Mensajeria from "./components/Mensajeria";
 import Payout from "./components/Payout";
-import Contador from "./components/Contador";
 import Auth from "./components/Auth";
 import SendPasswordReset from "./components/SendPasswordReset";
 import UpdatePassword from "./components/UpdatePassword";
@@ -40,7 +39,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <Router>
       {user ? (
         <>
           <header className="app-header">
@@ -107,10 +106,6 @@ export default function App() {
               <Route path="/update-password" element={<UpdatePassword />} />
             </Routes>
           </main>
-
-          <footer>
-            <Contador usuarioId={user.id} />
-          </footer>
         </>
       ) : (
         <Routes>
@@ -119,6 +114,6 @@ export default function App() {
           <Route path="*" element={<Auth onLogin={setUser} />} />
         </Routes>
       )}
-    </>
+    </Router>
   );
 }
